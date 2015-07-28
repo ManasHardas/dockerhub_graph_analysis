@@ -6,7 +6,7 @@ class DockerfileSpider(scrapy.Spider):
     name = "dockerfilespider"
     allowed_domains = ["github.com"]
     start_urls = (
-        'http://www.github.com/',
+        'https://github.com/docker-library/redis/tree/5e3f74f3edbbf8311b86e40e7ebe47f602981387/2.6',
     )
 
     def parse(self, response):
