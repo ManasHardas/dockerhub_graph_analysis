@@ -1,4 +1,8 @@
-
+# Scraped dockerfiles
 data/*
+
+# Python compiled bianries
 *.pyc
+
+# Mac generated binaries
 *DS_Store*
