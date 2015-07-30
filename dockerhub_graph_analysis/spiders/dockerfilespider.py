@@ -2,13 +2,13 @@
 import scrapy
 import unicodedata
 from bs4 import BeautifulSoup
-from urllibrary import generate_github_urls
+from urllibrary import github_urls
 
 
 class DockerfileSpider(scrapy.Spider):
     name = "dockerfilespider"
     allowed_domains = ["github.com"]
-    start_urls = generate_github_urls()
+    start_urls = github_urls()
 
     def parse(self, response):
         soup = BeautifulSoup(response.body, 'html.parser')
