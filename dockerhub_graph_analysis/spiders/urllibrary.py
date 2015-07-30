@@ -1,9 +1,22 @@
 import requests
 import json
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
 
 
-def generate_github_urls():
-	r = requests.get('https://api.github.com/repos/django/django')
+def github_urls():
+	baseurl = 'https://api.github.com/search/repositories'
+	queryparams = '?q=docker%20in:name,description,readme'
+
+	r = requests.get(baseurl + queryparams)
 	if(r.ok):
-		repoItem = json.loads(r.text or r.content)
-		print "Django repository created: " + repoItem['created_at']
+		repoItems = json.loads(r.text or r.content)
+		# pp.pprint(repoItem)
+		urllist = map(html_url_getter, repoItems['items'])
+		print urllist
+
+
+def html_url_getter(adict):
+	return adict['html_url']
+
+github_urls()
