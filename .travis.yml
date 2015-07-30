@@ -6,3 +6,4 @@ install:
 script:
   - pep8 --ignore=[W191]
   - pep8 .
+  - pep8 --ignore=[W191] .
