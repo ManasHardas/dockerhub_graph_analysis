@@ -1,13 +1,35 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import unicodedata
+from bs4 import BeautifulSoup
 
 
 class DockerfileSpider(scrapy.Spider):
     name = "dockerfilespider"
     allowed_domains = ["github.com"]
     start_urls = (
-        'https://github.com/docker-library/redis/tree/5e3f74f3edbbf8311b86e40e7ebe47f602981387/2.6',
+        'https://github.com/docker-library/redis/blob/5e3f74f3edbbf8311b86e40e7ebe47f602981387/2.6/Dockerfile',
     )
 
     def parse(self, response):
-        pass
+        soup = BeautifulSoup(response.body, 'html.parser')
+
+        title_uni = soup.title.get_text()
+        title_str = uni_to_str(title_uni)
+
+        filename = title_str.split()[3].replace('/', '-')
+        print filename
+
+        _filepath = r'../data/' + filename
+        f = open(_filepath, 'w')
+        f.write('NAME ' + filename + '\n')
+
+        for line in soup.find_all('td'):
+            stripped_line = uni_to_str(line.get_text()).strip()
+            print stripped_line
+            if stripped_line:
+                f.write(stripped_line + '\n')
+
+
+def uni_to_str(uni):
+    return unicodedata.normalize('NFKD', uni).encode('ascii', 'ignore')
