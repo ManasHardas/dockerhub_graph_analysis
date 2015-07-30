@@ -1,7 +1,5 @@
 import requests
 import json
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
 
 
 def github_urls():
@@ -11,7 +9,6 @@ def github_urls():
 	r = requests.get(baseurl + queryparams)
 	if(r.ok):
 		repoItems = json.loads(r.text or r.content)
-		# pp.pprint(repoItem)
 		urllist = map(html_url_getter, repoItems['items'])
 		print urllist
 
