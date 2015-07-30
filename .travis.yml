@@ -4,5 +4,5 @@ python:
 install:
   - pip install pep8
 script:
-  - pep8 --exclude=settings.py
-  - pep8 --ignore=[W191] .
+  - pep8 --exclude=settings.py --ignore=W191 .
+  
