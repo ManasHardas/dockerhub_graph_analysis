@@ -38,11 +38,8 @@ def parse_dockerfile_page(self, response):
         if stripped_line:
             f.write(stripped_line + '\n')
 
-	exit 0
+	return 0
+
 
 def uni_to_str(uni):
     return unicodedata.normalize('NFKD', uni).encode('ascii', 'ignore')
-
-
-def html_url_getter(adict):
-	return adict['html_url']
