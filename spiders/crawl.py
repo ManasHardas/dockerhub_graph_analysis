@@ -7,16 +7,16 @@ from credentials import github_user, github_pass
 
 
 def crawl_github_urls():
-	from url_datasets.github_archive_urls import urls_with_docker
-	pages = map(request_url_page, urls)
+    from url_datasets.github_archive_urls import urls_with_docker
+    pages = map(request_url_page, urls)
 
 
 def request_url_page(url):
-	r = requests.get(url, auth=(github_user, github_pass))
+    r = requests.get(url, auth=(github_user, github_pass))
 
-	if(r.ok):
-		# repoItems = json.loads(r.text or r.content)
-		parse_dockerfile_page(r.body)
+    if(r.ok):
+        # repoItems = json.loads(r.text or r.content)
+        parse_dockerfile_page(r.body)
 
 
 def parse_dockerfile_page(self, response):
@@ -38,7 +38,7 @@ def parse_dockerfile_page(self, response):
         if stripped_line:
             f.write(stripped_line + '\n')
 
-	return 0
+        return 0
 
 
 def uni_to_str(uni):
