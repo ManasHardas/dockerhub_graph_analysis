@@ -2,7 +2,6 @@
 import scrapy
 import unicodedata
 from bs4 import BeautifulSoup
-from urllibrary import github_urls
 
 
 class DockerfileSpider(scrapy.Spider):
