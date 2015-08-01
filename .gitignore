@@ -1,5 +1,8 @@
 # Scraped dockerfiles
-data/*
+scraped_dockerfiles/*
+
+# Repo urls
+repo_urls/*
 
 # Python compiled bianries
 *.pyc
