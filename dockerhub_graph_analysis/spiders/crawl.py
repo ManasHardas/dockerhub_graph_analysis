@@ -1,13 +1,10 @@
 import requests
-import json
+import os
 
+def crawl_urls(urls):
 
-def github_urls():
-	baseurl = 'https://api.github.com/search/repositories'
-	queryparams = '?q=docker%20in:name,description,readme'
-	pagination = '&per_page=50'
-	user = 'ManasHardas'
-	password = 'MSH@github21081!'
+	user = os.environ['github_user']
+	password = os.environ['github_pass']
 
 	r = requests.get(baseurl + queryparams + pagination, auth=(user, password))
 	if(r.ok):
@@ -19,5 +16,3 @@ def github_urls():
 
 def html_url_getter(adict):
 	return adict['html_url']
-
-github_urls()
