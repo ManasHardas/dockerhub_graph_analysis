@@ -2,9 +2,9 @@
 scraped_dockerfiles/*
 
 # Repo urls
-repo_urls/*
+github_data/data/*
 
-# Python compiled bianries
+# Python compiled binaries
 *.pyc
 
 # Mac generated binaries
