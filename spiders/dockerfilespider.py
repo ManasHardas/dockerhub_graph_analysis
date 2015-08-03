@@ -9,7 +9,8 @@ from github_data.github_urls import df_repo_urls_with_kw_docker_2011_to_2015
 class DockerfileSpider(scrapy.Spider):
     name = "dockerfilespider"
     allowed_domains = ["github.com"]
-    start_urls = df_repo_urls_with_kw_docker_2011_to_2015
+    # start_urls = df_repo_urls_with_kw_docker_2011_to_2015
+    start_urls = 'https://github.com/grokkerlab/celery27'
 
     def parse(self, response):
                 # only parse dockerfile pages; rest ignore
