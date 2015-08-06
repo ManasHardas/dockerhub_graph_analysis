@@ -1,9 +1,3 @@
-# Scraped dockerfiles
-scraped_dockerfiles/*
-
-# Repo urls
-github_data/data/*
-
 # Python compiled binaries
 *.pyc
 
